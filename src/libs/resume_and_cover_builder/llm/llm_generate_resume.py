@@ -12,6 +12,7 @@ from dotenv import load_dotenv
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from loguru import logger
 from pathlib import Path
+import config as cfg  # Import configuration for LLM settings
 
 # Load environment variables from .env file
 load_dotenv()
@@ -25,9 +26,16 @@ logger.add(log_path / "gpt_resume.log", rotation="1 day", compression="zip", ret
 
 class LLMResumer:
     def __init__(self, openai_api_key, strings):
+        # Configure LLM with settings from config file instead of hardcoded values
+        # This allows for flexibility in using different LLM providers
+        base_url = cfg.LLM_API_URL if cfg.LLM_API_URL and len(cfg.LLM_API_URL) > 0 else None
+        
         self.llm_cheap = LoggerChatModel(
             ChatOpenAI(
-                model_name="gpt-4o-mini", openai_api_key=openai_api_key, temperature=0.4
+                model_name=cfg.LLM_MODEL,  # Use model from config
+                openai_api_key=openai_api_key, 
+                temperature=0.4,
+                base_url=base_url  # Use custom API URL if provided in config
             )
         )
         self.strings = strings
