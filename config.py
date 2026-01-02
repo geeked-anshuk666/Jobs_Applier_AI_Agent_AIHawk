@@ -16,7 +16,15 @@ JOB_SUITABILITY_SCORE = 7
 JOB_MAX_APPLICATIONS = 5
 JOB_MIN_APPLICATIONS = 1
 
-LLM_MODEL_TYPE = 'openai'
-LLM_MODEL = 'gpt-4o-mini'
-# Only required for OLLAMA models
-LLM_API_URL = ''
+# --- LLM CONFIGURATION ---
+# Keep 'openai' as type for any compatible API (DeepSeek, OpenRouter, etc.)
+LLM_MODEL_TYPE = 'openai' 
+
+# Examples:
+# OpenAI: 'gpt-4o-mini' | URL: 'https://api.openai.com/v1'
+# DeepSeek: 'deepseek-chat' | URL: 'https://api.deepseek.com'
+# OpenRouter: 'google/gemini-2.0-flash-001' | URL: 'https://openrouter.ai/api/v1'
+# Local (LM Studio): 'llama-3.2' | URL: 'http://localhost:1234/v1'
+
+LLM_MODEL = 'gpt-4o-mini' 
+LLM_API_URL = 'https://api.openai.com/v1' # Set this to your provider's base URL
