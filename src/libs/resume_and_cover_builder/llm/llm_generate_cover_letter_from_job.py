@@ -7,12 +7,14 @@ import textwrap
 from ..utils import LoggerChatModel
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from langchain_openai import ChatOpenAI
+from langchain_huggingface import HuggingFaceEmbeddings  # Switched from OpenAI to HuggingFace embeddings for cost efficiency
 from pathlib import Path
 from dotenv import load_dotenv
 from requests.exceptions import HTTPError as HTTPStatusError
 from pathlib import Path
 from loguru import logger
+import config as cfg  # Import configuration for LLM settings
 
 # Load environment variables from .env file
 load_dotenv()
@@ -26,8 +28,20 @@ logger.add(log_path / "gpt_cover_letter_job_descr.log", rotation="1 day", compre
 
 class LLMCoverLetterJobDescription:
     def __init__(self, openai_api_key, strings):
-        self.llm_cheap = LoggerChatModel(ChatOpenAI(model_name="gpt-4o-mini", openai_api_key=openai_api_key, temperature=0.4))
-        self.llm_embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
+        # Configure LLM with settings from config file instead of hardcoded values
+        # This allows for flexibility in using different LLM providers
+        base_url = cfg.LLM_API_URL if cfg.LLM_API_URL and len(cfg.LLM_API_URL) > 0 else None
+        
+        self.llm_cheap = LoggerChatModel(
+            ChatOpenAI(
+                model_name=cfg.LLM_MODEL,  # Use model from config
+                openai_api_key=openai_api_key, 
+                temperature=0.4,
+                base_url=base_url  # Use custom API URL if provided in config
+            )
+        )
+        # Use HuggingFace embeddings instead of OpenAI for cost efficiency
+        self.llm_embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
         self.strings = strings
 
     @staticmethod
