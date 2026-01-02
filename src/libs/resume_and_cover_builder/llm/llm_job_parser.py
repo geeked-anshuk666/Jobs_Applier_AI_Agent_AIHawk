@@ -14,12 +14,13 @@ from pathlib import Path
 from langchain_core.prompt_values import StringPromptValue
 from langchain_core.runnables import RunnablePassthrough
 from langchain_text_splitters import TokenTextSplitter
-from langchain_community.embeddings import OpenAIEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings  # Switched from OpenAI to HuggingFace embeddings for cost efficiency
 from langchain_community.vectorstores import FAISS
 from lib_resume_builder_AIHawk.config import global_config
 from langchain_community.document_loaders import TextLoader
 from requests.exceptions import HTTPError as HTTPStatusError  # HTTP error handling
 import openai
+import config as cfg  # Import configuration for LLM settings
 
 # Load environment variables from the .env file
 load_dotenv()
@@ -34,12 +35,20 @@ logger.add(log_path / "gpt_resume.log", rotation="1 day", compression="zip", ret
 
 class LLMParser:
     def __init__(self, openai_api_key):
+        # Configure LLM with settings from config file instead of hardcoded values
+        # This allows for flexibility in using different LLM providers
+        base_url = cfg.LLM_API_URL if cfg.LLM_API_URL and len(cfg.LLM_API_URL) > 0 else None
+
         self.llm = LoggerChatModel(
             ChatOpenAI(
-                model_name="gpt-4o-mini", openai_api_key=openai_api_key, temperature=0.4
+                model_name=cfg.LLM_MODEL,  # Use model from config
+                openai_api_key=openai_api_key, 
+                temperature=0.4,
+                base_url=base_url  # Use custom API URL if provided in config
             )
         )
-        self.llm_embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)  # Initialize embeddings
+        # Use HuggingFace embeddings instead of OpenAI for cost efficiency
+        self.llm_embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
         self.vectorstore = None  # Will be initialized after document loading
 
     @staticmethod
@@ -205,4 +214,3 @@ class LLMParser:
         else:
             logger.warning("Invalid or not found recruiter's email.")
             return ""
- 
