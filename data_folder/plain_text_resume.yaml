@@ -1,130 +1,56 @@
-personal_information:
-  name: "[Your Name]"
-  surname: "[Your Surname]"
-  date_of_birth: "[Your Date of Birth]"
-  country: "[Your Country]"
-  city: "[Your City]"
-  address: "[Your Address]"
-  zip_code: "[Your zip code]"
-  phone_prefix: "[Your Phone Prefix]"
-  phone: "[Your Phone Number]"
-  email: "[Your Email Address]"
-  github: "[Your GitHub Profile URL]"
-  linkedin: "[Your LinkedIn Profile URL]"
+personal_information: |
+  Anshuk Jirli
+  anshuk.jirli2002@gmail.com | +91-8951830430 | linkedin.com/in/anshuk-jirli-160075206/ | github.com/geeked-anshuk666
+  geeked-anshuk666.github.io/personal-portfolio-anshuk.dev/
 
-education_details:
-  - education_level: "[Your Education Level]"
-    institution: "[Your Institution]"
-    field_of_study: "[Your Field of Study]"
-    final_evaluation_grade: "[Your Final Evaluation Grade]"
-    start_date: "[Start Date]"
-    year_of_completion: "[Year of Completion]"
-    exam:
-      exam_name_1: "[Grade]"
-      exam_name_2: "[Grade]"
-      exam_name_3: "[Grade]"
-      exam_name_4: "[Grade]"
-      exam_name_5: "[Grade]"
-      exam_name_6: "[Grade]"
+professional_summary: |
+  Backend-focused Software Developer with hands-on experience building and deploying production systems using Python, Django, REST APIs, PostgreSQL, and Docker. Experienced in developing secure APIs, optimizing database performance, and working with asynchronous background tasks. Seeking Software Engineer or Backend Engineer roles.
 
-experience_details:
-  - position: "[Your Position]"
-    company: "[Company Name]"
-    employment_period: "[Employment Period]"
-    location: "[Location]"
-    industry: "[Industry]"
-    key_responsibilities:
-      - responsibility_1: "[Responsibility Description]"
-      - responsibility_2: "[Responsibility Description]"
-      - responsibility_3: "[Responsibility Description]"
-    skills_acquired:
-      - "[Skill]"
-      - "[Skill]"
-      - "[Skill]"
+experience_details: |
+  Software Developer, Anexgate Network Security Solutions– Belagavi, Karnataka, India
+  Feb 2025– Present
+  • Built and maintained a Django-based internal ticketing system using PostgreSQL and Azure AD authentication to support customer support workflows.
+  • Developed REST APIs for firewall and network management modules including Routing, VPN, IDS/IPS, and SD-WAN, implementing token-based authentication and access controls.
+  • Implemented asynchronous background tasks using Celery and Redis for log processing, report generation, and scheduled jobs.
+  • Optimized Django ORM queries and indexing strategies to improve data retrieval performance and reduce query latency.
+  • Deployed and maintained production services using Docker, Nginx, and Gunicorn on a cloud VM, handling environment configuration and uptime monitoring.
 
-  - position: "[Your Position]"
-    company: "[Company Name]"
-    employment_period: "[Employment Period]"
-    location: "[Location]"
-    industry: "[Industry]"
-    key_responsibilities:
-      - responsibility_1: "[Responsibility Description]"
-      - responsibility_2: "[Responsibility Description]"
-      - responsibility_3: "[Responsibility Description]"
-    skills_acquired:
-      - "[Skill]"
-      - "[Skill]"
-      - "[Skill]"
+technical_skills: |
+  Languages: Python, Java, C
+  Frameworks: Django, FastAPI, Flask, Django REST Framework, Bootstrap, TailwindCSS
+  Frontend: HTML, CSS, JavaScript, Figma
+  Databases: PostgreSQL, MySQL, SQLite, Redis
+  Version Control: Git, GitHub, GitLab
+  Backend & DevOps: Docker, Nginx, Gunicorn, Celery, Redis
+  Cloud: DigitalOcean
+  Tools: Git, GitHub, GitLab
+  Operating Systems: Linux
+  Foundations: Machine Learning
 
-projects:
-  - name: "[Project Name]"
-    description: "[Project Description]"
-    link: "[Project Link]"
+projects: |
+  Food Delivery Microservices Platform | Python, FastAPI, SQLAlchemy, Redis, Docker, Swagger, Render
+  Git/Github
+  • Built scalable microservices for Users, Restaurants, and Delivery using FastAPI, SQLAlchemy, Docker, with fully documented Swagger APIs.
+  • Improved order-processing performance using asynchronous request handling and Redis-backed background task execution.
 
-  - name: "[Project Name]"
-    description: "[Project Description]"
-    link: "[Project Link]"
+  Product Importer Application | Python, Django, PostgreSQL, Celery, Redis, Docker
+  • Designed and implemented a Django-based backend system to ingest large CSV files (up to 500,000 records) with validation, duplicate handling, and real-time import progress tracking.
+  • Offloaded long-running import tasks to Celery with Redis, ensuring non-blocking API requests; containerized and deployed the service using Docker with PostgreSQL.
 
-achievements:
-  - name: "[Achievement Name]"
-    description: "[Achievement Description]"
-  - name: "[Achievement Name]"
-    description: "[Achievement Description]"
+  Skin Disease Classifier | HTML, CSS, TailwindCSS, JavaScript, Python, Flask, Machine Learning, VGG16
+  GitHub
+  • Trained a convolutional neural network based on VGG16 using publicly available datasets including ISIC Archive, HAM10000, and DermNet for multi-class skin disease classification.
+  • Crafted interactive Flask web interface facilitating image uploads and real-time predictions.
 
-certifications:
-  - name: "[Certification Name]"
-    description: "[Certification Description]"
-  - name: "[Certification Name]"
-    description: "[Certification Description]"
+education_details: |
+  S G Balekundri Institute of Technology, Belagavi, Karnataka, India– BE in Computer Science Engineering
+  June 2024
 
-languages:
-  - language: "[Language]"
-    proficiency: "[Proficiency Level]"
-  - language: "[Language]"
-    proficiency: "[Proficiency Level]"
+certifications: |
+  Electronic Arts Software Engineering Virtual Experience Program (Forage)
+  Wells Fargo Software Engineering Virtual Experience Program (Forage)
 
-interests:
-  - "[Interest]"
-  - "[Interest]"
-  - "[Interest]"
-
-availability:
-  notice_period: "[Notice Period]"
-
-salary_expectations:
-  salary_range_usd: "[Salary Range]"
-
-self_identification:
-  gender: "[Gender]"
-  pronouns: "[Pronouns]"
-  veteran: "[Yes/No]"
-  disability: "[Yes/No]"
-  ethnicity: "[Ethnicity]"
-
-
-legal_authorization:
-  eu_work_authorization: "[Yes/No]"
-  us_work_authorization: "[Yes/No]"
-  requires_us_visa: "[Yes/No]"
-  requires_us_sponsorship: "[Yes/No]"
-  requires_eu_visa: "[Yes/No]"
-  legally_allowed_to_work_in_eu: "[Yes/No]"
-  legally_allowed_to_work_in_us: "[Yes/No]"
-  requires_eu_sponsorship: "[Yes/No]"
-  canada_work_authorization: "[Yes/No]"
-  requires_canada_visa: "[Yes/No]"
-  legally_allowed_to_work_in_canada: "[Yes/No]"
-  requires_canada_sponsorship: "[Yes/No]"
-  uk_work_authorization: "[Yes/No]"
-  requires_uk_visa: "[Yes/No]"
-  legally_allowed_to_work_in_uk: "[Yes/No]"
-  requires_uk_sponsorship: "[Yes/No]"
-
-
-work_preferences:
-  remote_work: "[Yes/No]"
-  in_person_work: "[Yes/No]"
-  open_to_relocation: "[Yes/No]"
-  willing_to_complete_assessments: "[Yes/No]"
-  willing_to_undergo_drug_tests: "[Yes/No]"
-  willing_to_undergo_background_checks: "[Yes/No]"
+languages: English, Hindi
+interests: Software Development, Machine Learning, DevOps
+availability: Open to new opportunities
+salary_expectations: Competitive

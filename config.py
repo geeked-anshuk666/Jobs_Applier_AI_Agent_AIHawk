@@ -26,5 +26,5 @@ LLM_MODEL_TYPE = 'openai'
 # OpenRouter: 'google/gemini-2.0-flash-001' | URL: 'https://openrouter.ai/api/v1'
 # Local (LM Studio): 'llama-3.2' | URL: 'http://localhost:1234/v1'
 
-LLM_MODEL = 'gpt-4o-mini' 
+LLM_MODEL = 'gpt-oss-120b' 
 LLM_API_URL = 'https://api.openai.com/v1' # Set this to your provider's base URL

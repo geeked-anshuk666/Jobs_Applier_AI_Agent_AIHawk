@@ -45,3 +45,11 @@ title_blacklist:
 
 location_blacklist:
   - Brazil
+
+work_preferences:
+  remote_work: true
+  in_person_work: true
+  open_to_relocation: true
+  willing_to_complete_assessments: true
+  willing_to_undergo_drug_tests: false
+  willing_to_undergo_background_checks: true
