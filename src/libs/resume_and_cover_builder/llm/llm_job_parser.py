@@ -110,7 +110,7 @@ class LLMParser:
             raise ValueError("Vectorstore not initialized. Run extract_job_description first.")
         
         retriever = self.vectorstore.as_retriever()
-        retrieved_docs = retriever.get_relevant_documents(query)[:top_k]
+        retrieved_docs = retriever.invoke(query)[:top_k]
         context = "\n\n".join(doc.page_content for doc in retrieved_docs)
         logger.debug(f"Context retrieved for query '{query}': {context[:200]}...")  # Log the first 200 characters
         return context

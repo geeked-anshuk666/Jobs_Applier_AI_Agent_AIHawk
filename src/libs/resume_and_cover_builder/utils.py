@@ -5,6 +5,7 @@ This module contains utility functions for the Resume and Cover Letter Builder s
 # app/libs/resume_and_cover_builder/utils.py
 import json
 import openai
+import re
 import time
 from datetime import datetime
 from typing import Dict, List
@@ -88,6 +89,8 @@ class LoggerChatModel:
                 reply = self.llm.invoke(messages)
                 parsed_reply = self.parse_llmresult(reply)
                 LLMLogger.log_request(prompts=messages, parsed_reply=parsed_reply)
+                # Sanitize the content to remove markdown code blocks
+                reply.content = self.sanitize_llm_output(reply.content)
                 return reply
             except (openai.RateLimitError, HTTPStatusError) as err:
                 if isinstance(err, HTTPStatusError) and err.response.status_code == 429:
@@ -95,9 +98,9 @@ class LoggerChatModel:
                     time.sleep(retry_delay)
                     retry_delay *= 2
                 else:
-                    wait_time = self.parse_wait_time_from_error_message(str(err))
-                    logger.warning(f"Rate limit exceeded or API error. Waiting for {wait_time} seconds before retrying (Attempt {attempt + 1}/{max_retries})...")
-                    time.sleep(wait_time)
+                    logger.warning(f"Rate limit exceeded or API error (StatusCode: {err.response.status_code if hasattr(err, 'response') else 'N/A'}). Waiting for {retry_delay} seconds before retrying (Attempt {attempt + 1}/{max_retries})...")
+                    time.sleep(retry_delay)
+                    retry_delay *= 2
             except Exception as e:
                 logger.error(f"Unexpected error occurred: {str(e)}, retrying in {retry_delay} seconds... (Attempt {attempt + 1}/{max_retries})")
                 time.sleep(retry_delay)
@@ -129,3 +132,32 @@ class LoggerChatModel:
             },
         }
         return parsed_result
+
+    @staticmethod
+    def sanitize_llm_output(output: str) -> str:
+        """
+        Clean the output from the LLM.
+        1. Remove markdown code blocks (```html ... ```).
+        2. Remove triple single quotes (''').
+        3. Convert markdown bold (**text**) to HTML (<strong>text</strong>).
+        4. Convert markdown italic (*text*) to HTML (<em>text</em>).
+        """
+        
+        # 1. Remove code blocks
+        clean_output = re.sub(r"```(html)?", "", output, flags=re.IGNORECASE)
+        clean_output = re.sub(r"```", "", clean_output)
+        
+        # 2. Remove triple quotes
+        clean_output = clean_output.replace("'''", "")
+        
+        # 3. Convert bold (**text**) to <strong>text</strong>
+        # We use a non-greedy match (.*?) to handle multiple bold items in one line
+        clean_output = re.sub(r"\*\*(.*?)\*\*", r"<strong>\1</strong>", clean_output)
+        
+        # 4. Convert italic (*text*) to <em>text</em>
+        # Avoid matching list items (lines starting with * ). 
+        # We only match * if it's not at the start of a line (or handled by markdown list parser, but here we assume HTML output)
+        # Simple approach: match *text* where * is not preceded by newline
+        clean_output = re.sub(r"(?<!^)(?<!\n)\*(.*?)\*", r"<em>\1</em>", clean_output)
+        
+        return clean_output.strip()
