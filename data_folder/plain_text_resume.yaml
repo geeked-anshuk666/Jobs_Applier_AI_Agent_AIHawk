@@ -1,56 +1,79 @@
-personal_information: |
-  Anshuk Jirli
-  anshuk.jirli2002@gmail.com | +91-8951830430 | linkedin.com/in/anshuk-jirli-160075206/ | github.com/geeked-anshuk666
-  geeked-anshuk666.github.io/personal-portfolio-anshuk.dev/
+personal_information:
+  name: Anshuk
+  surname: Jirli
+  date_of_birth: null
+  country: India
+  city: Belgaum
+  address: null
+  zip_code: null
+  phone_prefix: "+91"
+  phone: "8951830430"
+  email: anshuk.jirli2002@gmail.com
+  github: https://github.com/geeked-anshuk666
+  linkedin: https://linkedin.com/in/anshuk-jirli-160075206/
+  portfolio: https://geeked-anshuk666.github.io/personal-portfolio-anshuk.dev/
 
-professional_summary: |
-  Backend-focused Software Developer with hands-on experience building and deploying production systems using Python, Django, REST APIs, PostgreSQL, and Docker. Experienced in developing secure APIs, optimizing database performance, and working with asynchronous background tasks. Seeking Software Engineer or Backend Engineer roles.
+education_details:
+  - education_level: BE
+    institution: S G Balekundri Institute of Technology
+    field_of_study: Computer Science Engineering
+    final_evaluation_grade: null
+    start_date: null
+    year_of_completion: 2024
+    exam: []
 
-experience_details: |
-  Software Developer, Anexgate Network Security Solutions– Belagavi, Karnataka, India
-  Feb 2025– Present
-  • Built and maintained a Django-based internal ticketing system using PostgreSQL and Azure AD authentication to support customer support workflows.
-  • Developed REST APIs for firewall and network management modules including Routing, VPN, IDS/IPS, and SD-WAN, implementing token-based authentication and access controls.
-  • Implemented asynchronous background tasks using Celery and Redis for log processing, report generation, and scheduled jobs.
-  • Optimized Django ORM queries and indexing strategies to improve data retrieval performance and reduce query latency.
-  • Deployed and maintained production services using Docker, Nginx, and Gunicorn on a cloud VM, handling environment configuration and uptime monitoring.
+experience_details:
+  - position: Software Developer
+    company: Anexgate Network Security Solutions
+    employment_period: Feb 2025 – Present
+    location: Belgaum, Karnataka, India
+    industry: Network Security
+    key_responsibilities:
+      - description: Built and maintained a Django-based internal ticketing system using PostgreSQL and Azure AD authentication, handling 500+ weekly support requests and reducing ticket resolution time by 30%.
+      - description: Developed secure high-performance REST APIs for firewall and network management modules, reducing API response latency by 40% through efficient query optimization.
+      - description: Implemented asynchronous background tasks using Celery and Redis to process 10k+ daily log entries, offloading intensive tasks and improving application responsiveness by 90%.
+      - description: Optimized Django ORM queries and database indexing strategies, resulting in a 50% decrease in average page load times for core dashboards.
+      - description: Deployed and maintained production services using Docker, Nginx, and Gunicorn on cloud infrastructure, achieving 99.9% system uptime and automating deployment pipelines.
+    skills_acquired:
+      - Python
+      - Django
+      - REST APIs
+      - PostgreSQL
+      - Docker
+      - Celery
+      - Redis
+      - Nginx
+      - Gunicorn
+      - Azure AD
 
-technical_skills: |
-  Languages: Python, Java, C
-  Frameworks: Django, FastAPI, Flask, Django REST Framework, Bootstrap, TailwindCSS
-  Frontend: HTML, CSS, JavaScript, Figma
-  Databases: PostgreSQL, MySQL, SQLite, Redis
-  Version Control: Git, GitHub, GitLab
-  Backend & DevOps: Docker, Nginx, Gunicorn, Celery, Redis
-  Cloud: DigitalOcean
-  Tools: Git, GitHub, GitLab
-  Operating Systems: Linux
-  Foundations: Machine Learning
+projects:
+  - name: Food Delivery Microservices Platform
+    description: Built scalable microservices for Users, Restaurants, and Delivery using FastAPI and Docker, improving system throughput to handle 1000+ concurrent requests. Optimized order processing performance by 60% using asynchronous handlers and Redis caching.
+    link: https://github.com/geeked-anshuk666/food-delivery-backend
+  - name: Product Importer Application
+    description: Designed a high-throughput Django backend to ingest large CSV datasets (500,000+ records) in under 2 minutes with automated validation. Implemented Celery workers to handle background processing, ensuring zero downtime during bulk data imports.
+    link: https://github.com/geeked-anshuk666/product-importer
+  - name: Skin Disease Classifier
+    description: Trained a VGG16-based Convolutional Neural Network on ISIC and HAM10000 datasets, achieving 92% classification accuracy across 7 skin disease classes. Developed a real-time Flask web interface providing inference results in under 500ms.
+    link: https://github.com/geeked-anshuk666/Skin_Disease_classification
+    
+achievements: []
 
-projects: |
-  Food Delivery Microservices Platform | Python, FastAPI, SQLAlchemy, Redis, Docker, Swagger, Render
-  Git/Github
-  • Built scalable microservices for Users, Restaurants, and Delivery using FastAPI, SQLAlchemy, Docker, with fully documented Swagger APIs.
-  • Improved order-processing performance using asynchronous request handling and Redis-backed background task execution.
+certifications:
+  - name: Electronic Arts Software Engineering Virtual Experience Program
+    description: Forage
+  - name: Wells Fargo Software Engineering Virtual Experience Program
+    description: Forage
 
-  Product Importer Application | Python, Django, PostgreSQL, Celery, Redis, Docker
-  • Designed and implemented a Django-based backend system to ingest large CSV files (up to 500,000 records) with validation, duplicate handling, and real-time import progress tracking.
-  • Offloaded long-running import tasks to Celery with Redis, ensuring non-blocking API requests; containerized and deployed the service using Docker with PostgreSQL.
+languages:
+  - language: English
+    proficiency: Full Professional
+  - language: Hindi
+    proficiency: Native or Bilingual
+  - language: Kannada
+    proficiency: Native or Bilingual
 
-  Skin Disease Classifier | HTML, CSS, TailwindCSS, JavaScript, Python, Flask, Machine Learning, VGG16
-  GitHub
-  • Trained a convolutional neural network based on VGG16 using publicly available datasets including ISIC Archive, HAM10000, and DermNet for multi-class skin disease classification.
-  • Crafted interactive Flask web interface facilitating image uploads and real-time predictions.
-
-education_details: |
-  S G Balekundri Institute of Technology, Belagavi, Karnataka, India– BE in Computer Science Engineering
-  June 2024
-
-certifications: |
-  Electronic Arts Software Engineering Virtual Experience Program (Forage)
-  Wells Fargo Software Engineering Virtual Experience Program (Forage)
-
-languages: English, Hindi
-interests: Software Development, Machine Learning, DevOps
-availability: Open to new opportunities
-salary_expectations: Competitive
+interests:
+  - Software Development
+  - Machine Learning
+  - DevOps
