@@ -50,10 +50,13 @@ prompt_header_template = """
       <span>[Your Email]</span>
     </p> 
     <p class="fab fa-linkedin">
-      <a href="[Link LinkedIn account]">LinkedIn</a>
+      <a href="[Link LinkedIn account]">[Link LinkedIn account]</a>
     </p> 
     <p class="fab fa-github">
-      <a href="[Link GitHub account]">GitHub</a>
+      <a href="[Link GitHub account]">[Link GitHub account]</a>
+    </p> 
+    <p class="fas fa-globe">
+      <a href="[Link Portfolio]">[Link Portfolio]</a>
     </p> 
   </div>
 </header>
@@ -108,36 +111,6 @@ prompt_working_experience_template = """
           <li>[Mention any notable accomplishments or results]</li>
       </ul>
     </div>
-    <div class="entry">
-      <div class="entry-header">
-          <span class="entry-name">[Company Name]</span>
-          <span class="entry-location">[Location]</span>
-      </div>
-      <div class="entry-details">
-          <span class="entry-title">[Your Job Title]</span>
-          <span class="entry-year">[Start Date] – [End Date] </span>
-      </div>
-      <ul class="compact-list">
-          <li>[Describe your responsibilities and achievements in this role] </li>
-          <li>[Describe any key projects or technologies you worked with]  </li>
-          <li>[Mention any notable accomplishments or results]</li>
-      </ul>
-    </div>
-    <div class="entry">
-      <div class="entry-header">
-          <span class="entry-name">[Company Name]</span>
-          <span class="entry-location">[Location]</span>
-      </div>
-      <div class="entry-details">
-          <span class="entry-title">[Your Job Title]</span>
-          <span class="entry-year">[Start Date] – [End Date] </span>
-      </div>
-      <ul class="compact-list">
-          <li>[Describe your responsibilities and achievements in this role] </li>
-          <li>[Describe any key projects or technologies you worked with]  </li>
-          <li>[Mention any notable accomplishments or results]</li>
-      </ul>
-    </div>
 </section>
 ```
 The results should be provided in html format, Provide only the html code for the resume, without any explanations or additional text and also without ```html ```"""
@@ -148,24 +121,6 @@ prompt_projects_template = """
 ```
 <section id="side-projects">
     <h2>Side Projects</h2>
-    <div class="entry">
-      <div class="entry-header">
-          <span class="entry-name"><i class="fab fa-github"></i> <a href="[Github Repo or Link]">[Project Name]</a></span>
-      </div>
-      <ul class="compact-list">
-          <li>[Describe any notable recognition or reception]</li>
-          <li>[Describe any notable recognition or reception]</li>
-      </ul>
-    </div>
-    <div class="entry">
-      <div class="entry-header">
-          <span class="entry-name"><i class="fab fa-github"></i> <a href="[Github Repo or Link]">[Project Name]</a></span>
-      </div>
-      <ul class="compact-list">
-          <li>[Describe any notable recognition or reception]</li>
-          <li>[Describe any notable recognition or reception]</li>
-      </ul>
-    </div>
     <div class="entry">
       <div class="entry-header">
           <span class="entry-name"><i class="fab fa-github"></i> <a href="[Github Repo or Link]">[Project Name]</a></span>
