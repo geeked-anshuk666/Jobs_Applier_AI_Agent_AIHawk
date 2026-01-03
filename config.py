@@ -3,10 +3,10 @@
 from src.utils.constants import DEBUG, ERROR, LLM_MODEL, OPENAI
 
 #config related to logging must have prefix LOG_
-LOG_LEVEL = 'ERROR'
+LOG_LEVEL = 'INFO'
 LOG_SELENIUM_LEVEL = ERROR
 LOG_TO_FILE = False
-LOG_TO_CONSOLE = False
+LOG_TO_CONSOLE = True
 
 MINIMUM_WAIT_TIME_IN_SECONDS = 60
 
@@ -26,5 +26,5 @@ LLM_MODEL_TYPE = 'openai'
 # OpenRouter: 'google/gemini-2.0-flash-001' | URL: 'https://openrouter.ai/api/v1'
 # Local (LM Studio): 'llama-3.2' | URL: 'http://localhost:1234/v1'
 
-LLM_MODEL = 'gpt-oss-120b' 
-LLM_API_URL = 'https://api.openai.com/v1' # Set this to your provider's base URL
+LLM_MODEL = 'google/gemini-2.0-flash-001' 
+LLM_API_URL = 'https://openrouter.ai/api/v1' # Set this to your provider's base URL

@@ -5,8 +5,8 @@ onsite: true
 experience_level:
   internship: false
   entry: true
-  associate: true
-  mid_senior_level: true
+  associate: false
+  mid_senior_level: false
   director: false
   executive: false
 
@@ -27,17 +27,26 @@ date:
 
 positions:
   - Software engineer
+  - Software Developer
+  - Python Developer
+  - Backend developer
 
 locations:
-  - Germany
+  - India
+  - Bengaluru
+  - Banglore
+  - Bangalore
+  - Pune
 
+  
+
+  
 apply_once_at_company: true
 
 distance: 100
 
 company_blacklist:
-  - wayfair
-  - Crossover
+
 
 title_blacklist:
   - word1
