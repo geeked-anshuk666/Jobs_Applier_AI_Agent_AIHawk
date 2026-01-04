@@ -64,6 +64,7 @@ Act as an HR expert and resume writer specializing in professional branding. You
 
 - **My Information:**
   {personal_information}
+  {technical_skills}
   {skills}
 - **Job Description Context:**
   {job_description}

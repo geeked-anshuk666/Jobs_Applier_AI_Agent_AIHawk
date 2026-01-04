@@ -141,12 +141,16 @@ class LLMResumeJobDescription(LLMResumer):
                 if edu.exam:
                     for exam in edu.exam:
                         skills.update(exam.keys())
+        
+        if hasattr(self.resume, 'technical_skills') and self.resume.technical_skills:
+            skills.update(self.resume.technical_skills)
         prompt = ChatPromptTemplate.from_template(additional_skills_prompt_template)
         chain = prompt | self.llm_cheap | StrOutputParser()
         output = chain.invoke({
             "languages": self.resume.languages,
             "interests": self.resume.interests,
-            "skills": skills,
+            "technical_skills": self.resume.technical_skills if hasattr(self.resume, 'technical_skills') else [],
+            "skills": list(skills),
             "job_description": self.job_description
         })
         return output

@@ -45,16 +45,21 @@ experience_details:
       - Nginx
       - Gunicorn
       - Azure AD
+      - Routing
+      - VPN
+      - IDS/IPS
+      - SD-WAN
+      - Token-based Authentication
 
 projects:
   - name: Food Delivery Microservices Platform
-    description: Built scalable microservices for Users, Restaurants, and Delivery using FastAPI and Docker, improving system throughput to handle 1000+ concurrent requests. Optimized order processing performance by 60% using asynchronous handlers and Redis caching.
+    description: Built scalable microservices for Users, Restaurants, and Delivery using FastAPI, SQLAlchemy, and Docker, with fully documented Swagger APIs. Improved order-processing performance using asynchronous request handling and Redis-backed background task execution. handling 1000+ concurrent requests.
     link: https://github.com/geeked-anshuk666/food-delivery-backend
   - name: Product Importer Application
-    description: Designed a high-throughput Django backend to ingest large CSV datasets (500,000+ records) in under 2 minutes with automated validation. Implemented Celery workers to handle background processing, ensuring zero downtime during bulk data imports.
+    description: Designed and implemented a Django-based backend system to ingest large CSV files (up to 500,000 records) with validation, duplicate handling, and real-time import progress tracking. Offloaded long-running import tasks to Celery with Redis, ensuring non-blocking API requests; containerized and deployed the service using Docker with PostgreSQL.
     link: https://github.com/geeked-anshuk666/product-importer
   - name: Skin Disease Classifier
-    description: Trained a VGG16-based Convolutional Neural Network on ISIC and HAM10000 datasets, achieving 92% classification accuracy across 7 skin disease classes. Developed a real-time Flask web interface providing inference results in under 500ms.
+    description: Trained a convolutional neural network based on VGG16 using publicly available datasets including ISIC Archive, HAM10000, and DermNet for multi-class skin disease classification. Crafted interactive Flask web interface facilitating image uploads and real-time predictions achieving 92% classification accuracy.
     link: https://github.com/geeked-anshuk666/Skin_Disease_classification
     
 achievements: []
@@ -77,3 +82,24 @@ interests:
   - Software Development
   - Machine Learning
   - DevOps
+
+technical_skills:
+  - Java
+  - C
+  - FastAPI
+  - Flask
+  - Django REST Framework
+  - Bootstrap
+  - TailwindCSS
+  - HTML
+  - CSS
+  - JavaScript
+  - Figma
+  - MySQL
+  - SQLite
+  - Git
+  - GitHub
+  - GitLab
+  - DigitalOcean
+  - Linux
+  - Machine Learning Foundations

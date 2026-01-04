@@ -98,9 +98,12 @@ class LLMResumer:
             for exp in self.resume.experience_details:
                 if exp.skills_acquired:
                     skills.update(exp.skills_acquired)
+        if hasattr(self.resume, 'technical_skills') and self.resume.technical_skills:
+            skills.update(self.resume.technical_skills)
 
         input_data = {
             "personal_information": self.resume.personal_information,
+            "technical_skills": self.resume.technical_skills if hasattr(self.resume, 'technical_skills') else [],
             "skills": list(skills)
         } if data is None else data
         
@@ -270,11 +273,15 @@ class LLMResumer:
                 if edu.exam:
                     for exam in edu.exam:
                         skills.update(exam.keys())
+        
+        if hasattr(self.resume, 'technical_skills') and self.resume.technical_skills:
+            skills.update(self.resume.technical_skills)
         prompt = ChatPromptTemplate.from_template(additional_skills_prompt_template)
         chain = prompt | self.llm_cheap | StrOutputParser()
         input_data = {
             "languages": self.resume.languages,
             "interests": self.resume.interests,
+            "technical_skills": self.resume.technical_skills if hasattr(self.resume, 'technical_skills') else [],
             "skills": skills,
         } if data is None else data
         output = chain.invoke(input_data)
