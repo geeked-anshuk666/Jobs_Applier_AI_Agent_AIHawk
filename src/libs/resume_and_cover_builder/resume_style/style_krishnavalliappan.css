@@ -1,15 +1,11 @@
-/*Default$https://github.com/krishnavalliappan*/
 body {
   font-family: "Barlow", Arial, sans-serif;
-  line-height: 1.35;
-  /* Increased for better readability */
+  line-height: 1.5;
   color: #000;
-  /* Darker black for text */
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 10px;
-  /* Restored some padding */
-  font-size: 9pt;
+  padding: 0.5in;
+  font-size: 11pt;
 }
 
 header {
@@ -52,20 +48,18 @@ span {
 }
 
 h2 {
-  font-size: 12pt;
+  font-size: 13pt;
   font-weight: 700;
-  /* Bolder */
   border-bottom: 2px solid #000;
-  /* Thicker, darker border */
   padding-bottom: 2px;
-  margin: 10px 0 6px 0;
+  margin: 20px 0 10px 0;
   text-align: left;
   text-transform: uppercase;
   color: #000;
 }
 
 .entry {
-  margin-bottom: 6px;
+  margin-bottom: 12px;
 }
 
 .entry-header {

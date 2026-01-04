@@ -25,13 +25,15 @@ Act as an HR expert and resume writer with a specialization in creating ATS-frie
 
 
 prompt_working_experience = """
-Act as an HR expert and resume writer with a specialization in creating high-scoring ATS-friendly resumes. Your task is to detail the work experience for a resume. To achieve an ATS score > 90, follow these strict rules:
+Act as an HR expert and resume writer with a specialization in creating high-scoring ATS-friendly resumes. Your task is to detail the work experience for a resume. Aim to fill the page by providing 4-6 high-impact bullet points for each role.
 
+To achieve an ATS score > 90, follow these strict rules:
 1. **Format**: Follow the [Template to Use] exactly.
-2. **Action Verbs**: Start every bullet point with a strong, diverse professional action verb (e.g., "Engineered", "Orchestrated", "Spearheaded").
+2. **Action Verbs**: Start every bullet point with a strong, diverse professional action verb.
 3. **Metrics & Quantifiable Results**: Every responsibility MUST include a metric (e.g., %, $, numbers). Use the [Action Verb] + [Task] + [Result/Metric] format.
-4. **Keyword Optimization**: Intelligently integrate technical keywords from the job description context if provided.
-5. **Readability**: Ensure bullet points are concise yet high-impact. Avoid "bogus" or "fluff" language.
+4. **Keyword Optimization**: Intelligently integrate technical keywords from the job description context.
+5. **Detail & Depth**: Provide thorough explanations of technical challenges and solutions to ensure the content is substantial and professional.
+6. **Volume**: Ensure there are at least 4-6 bullet points per experience entry to avoid a sparse appearance.
 
 - **My information:**  
   {experience_details}
@@ -41,11 +43,12 @@ Act as an HR expert and resume writer with a specialization in creating high-sco
 
 
 prompt_projects = """
-Act as an HR expert and resume writer with a specialization in high-impact technical resumes. Your task is to highlight notable side projects. For a >90 ATS score:
+Act as an HR expert and resume writer with a specialization in high-impact technical resumes. Your task is to highlight notable side projects. Provide 3-4 substantial bullet points per project to ensure a dense, professional look.
 
-1. **Highlight Scalability**: Emphasize how projects solve technical problems or handle scale (e.g., "handled 10k+ requests").
+1. **Highlight Scalability**: Emphasize how projects solve technical problems or handle scale.
 2. **Tech Stack**: Clearly mention specific tools and languages used.
 3. **Format**: Every project bullet must show a result or a technical achievement.
+4. **Detail**: Expand on the "why" and "how" of your technical choices to fill out the section effectively.
 
 - **My information:**  
   {projects}
