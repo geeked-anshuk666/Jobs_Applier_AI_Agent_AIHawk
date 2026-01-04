@@ -24,6 +24,9 @@ class LLMLogger:
 
     @staticmethod
     def log_request(prompts, parsed_reply: Dict[str, Dict]):
+        if global_config.LOG_OUTPUT_FILE_PATH is None:
+            logger.debug("LOG_OUTPUT_FILE_PATH is None, skipping LLM request logging.")
+            return
         calls_log = global_config.LOG_OUTPUT_FILE_PATH / "open_ai_calls.json"
         if isinstance(prompts, StringPromptValue):
             prompts = prompts.text
@@ -102,7 +105,10 @@ class LoggerChatModel:
                     time.sleep(retry_delay)
                     retry_delay *= 2
             except Exception as e:
-                logger.error(f"Unexpected error occurred: {str(e)}, retrying in {retry_delay} seconds... (Attempt {attempt + 1}/{max_retries})")
+                import traceback
+                error_details = traceback.format_exc()
+                logger.error(f"Unexpected error occurred:\n{error_details}")
+                logger.info(f"Retrying in {retry_delay} seconds... (Attempt {attempt + 1}/{max_retries})")
                 time.sleep(retry_delay)
                 retry_delay *= 2
 

@@ -12,6 +12,10 @@ from src.libs.resume_and_cover_builder.llm.llm_job_parser import LLMParser
 from src.job import Job
 from src.utils.chrome_utils import HTML_to_PDF
 from .config import global_config
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+import time
 
 class ResumeFacade:
     def __init__(self, api_key, style_manager, resume_generator, resume_object, output_path):
@@ -69,12 +73,35 @@ class ResumeFacade:
 
         
     def link_to_job(self, job_url):
+        logger.info(f"Extracting job details from URL: {job_url}")
         self.driver.get(job_url)
-        self.driver.implicitly_wait(10)
-        body_element = self.driver.find_element("tag name", "body")
-        body_element = body_element.get_attribute("outerHTML")
+        
+        # Wait for the body to be present
+        try:
+            WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+        except Exception as e:
+            logger.warning(f"Timeout waiting for body: {e}")
+
+        # Robust scrolling to trigger lazy-loaded content
+        try:
+            total_height = self.driver.execute_script("return document.body.scrollHeight")
+            # Scroll down in increments
+            for i in range(1, 4):
+                self.driver.execute_script(f"window.scrollTo(0, {total_height * i / 3});")
+                time.sleep(1)
+            # Scroll back to top
+            self.driver.execute_script("window.scrollTo(0, 0);")
+        except Exception as e:
+            logger.warning(f"Error during scrolling: {e}")
+
+        # Wait a bit more for dynamic content to stabilize
+        time.sleep(2)
+
+        body_element = self.driver.find_element(By.TAG_NAME, "body")
+        body_html = body_element.get_attribute("outerHTML")
+        
         self.llm_job_parser = LLMParser(openai_api_key=global_config.API_KEY)
-        self.llm_job_parser.set_body_html(body_element)
+        self.llm_job_parser.set_body_html(body_html)
 
         self.job = Job()
         self.job.role = self.llm_job_parser.extract_role()
@@ -82,7 +109,6 @@ class ResumeFacade:
         self.job.description = self.llm_job_parser.extract_job_description()
         self.job.location = self.llm_job_parser.extract_location()
         self.job.link = job_url
-        logger.info(f"Extracting job details from URL: {job_url}")
 
 
     def create_resume_pdf_job_tailored(self) -> tuple[bytes, str]:

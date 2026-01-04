@@ -21,6 +21,7 @@ from langchain_community.document_loaders import TextLoader
 from requests.exceptions import HTTPError as HTTPStatusError  # HTTP error handling
 import openai
 import config as cfg  # Import configuration for LLM settings
+from bs4 import BeautifulSoup
 
 # Load environment variables from the .env file
 load_dotenv()
@@ -68,10 +69,25 @@ class LLMParser:
         Args:
             body_html (str): The HTML content to process.
         """
+        # Clean HTML to plain text using BeautifulSoup
+        try:
+            soup = BeautifulSoup(body_html, "html.parser")
+            # Remove scripts and styles
+            for script_or_style in soup(["script", "style"]):
+                script_or_style.decompose()
+            # Get text and clean whitespace
+            clean_text = soup.get_text(separator="\n")
+            lines = (line.strip() for line in clean_text.splitlines())
+            chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
+            clean_text = "\n".join(chunk for chunk in chunks if chunk)
+            logger.debug(f"HTML cleaned. Original length: {len(body_html)}, Cleaned length: {len(clean_text)}")
+        except Exception as e:
+            logger.warning(f"Error during BeautifulSoup cleaning: {e}. Falling back to raw HTML.")
+            clean_text = body_html
 
-        # Save the HTML content to a temporary file
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".html", mode="w", encoding="utf-8") as temp_file:
-            temp_file.write(body_html)
+        # Save the clean content to a temporary file
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".txt", mode="w", encoding="utf-8") as temp_file:
+            temp_file.write(clean_text)
             temp_file_path = temp_file.name 
         try:
             loader = TextLoader(temp_file_path, encoding="utf-8", autodetect_encoding=True)
@@ -97,12 +113,12 @@ class LLMParser:
             logger.error(f"Error during vectorstore creation: {e}")
             raise
 
-    def _retrieve_context(self, query: str, top_k: int = 3) -> str:
+    def _retrieve_context(self, query: str, top_k: int = 5) -> str:
         """
         Retrieves the most relevant text fragments using the retriever.
         Args:
             query (str): The search query.
-            top_k (int): Number of fragments to retrieve.
+            top_k (int): Number of fragments to retrieve. Increase from 3 to 5 for better density.
         Returns:
             str: Concatenated text fragments.
         """
