@@ -26,7 +26,7 @@ class StyleManager:
             return styles_to_files
         logger.debug(f"Reading styles directory: {self.styles_directory}")
         try:
-            files = [f for f in self.styles_directory.iterdir() if f.is_file()]
+            files = [f for f in self.styles_directory.iterdir() if f.is_file() and f.suffix == ".css"]
             logger.debug(f"Files found: {[f.name for f in files]}")
             for file_path in files:
                 logger.debug(f"Processing file: {file_path}")
