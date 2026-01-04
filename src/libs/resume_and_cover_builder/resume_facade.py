@@ -76,26 +76,44 @@ class ResumeFacade:
         logger.info(f"Extracting job details from URL: {job_url}")
         self.driver.get(job_url)
         
-        # Wait for the body to be present
+        # 1. Wait for the initial body to be present
         try:
-            WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+            WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
         except Exception as e:
-            logger.warning(f"Timeout waiting for body: {e}")
+            logger.warning(f"Timeout waiting for initial body: {e}")
 
-        # Robust scrolling to trigger lazy-loaded content
+        # 2. Extreme Granular Scrolling with Jitter to trigger lazy-loaded dynamic content
         try:
-            total_height = self.driver.execute_script("return document.body.scrollHeight")
-            # Scroll down in increments
-            for i in range(1, 4):
-                self.driver.execute_script(f"window.scrollTo(0, {total_height * i / 3});")
-                time.sleep(1)
-            # Scroll back to top
+            # Get total height and scroll in smaller, random increments
+            last_height = self.driver.execute_script("return document.body.scrollHeight")
+            for i in range(1, 10):
+                scroll_pos = (last_height / 10) * i
+                self.driver.execute_script(f"window.scrollTo(0, {scroll_pos});")
+                # Random jitter sleep to mimic human/allow scripts to fire
+                time.sleep(1.5 if i % 2 == 0 else 0.8)
+                
+                # Check if height changed (lazy loading)
+                new_height = self.driver.execute_script("return document.body.scrollHeight")
+                if new_height > last_height:
+                    last_height = new_height
+            
+            # Final scroll to bottom then back to top
+            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(2)
             self.driver.execute_script("window.scrollTo(0, 0);")
         except Exception as e:
-            logger.warning(f"Error during scrolling: {e}")
+            logger.warning(f"Error during extreme scrolling: {e}")
 
-        # Wait a bit more for dynamic content to stabilize
-        time.sleep(2)
+        # 3. Content Readiness Check: Ensure we have a minimum volume of text before proceeding
+        # Portals like Keka might show a skeleton before the real data arrives
+        start_wait = time.time()
+        while time.time() - start_wait < 15: # Additional 15s max buffer for content
+            body_text = self.driver.find_element(By.TAG_NAME, "body").text
+            if len(body_text.strip()) > 800: # Threshold for "complete" JD
+                logger.debug(f"Content volume confirmed ({len(body_text)} chars).")
+                break
+            logger.debug("Content volume low, waiting for dynamic elements to hydrate...")
+            time.sleep(2)
 
         body_element = self.driver.find_element(By.TAG_NAME, "body")
         body_html = body_element.get_attribute("outerHTML")

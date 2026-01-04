@@ -36,6 +36,24 @@ class LLMResumeJobDescription(LLMResumer):
         output = chain.invoke({"text": job_description_text})
         self.job_description = output
     
+    def generate_summary_section(self) -> str:
+        """
+        Generate the tailored professional summary section of the resume.
+        Returns:
+            str: The generated summary section.
+        """
+        skills = set()
+        if self.resume.experience_details:
+            for exp in self.resume.experience_details:
+                if exp.skills_acquired:
+                    skills.update(exp.skills_acquired)
+        
+        return super().generate_summary_section(data={
+            "personal_information": self.resume.personal_information,
+            "skills": list(skills),
+            "job_description": self.job_description
+        })
+
     def generate_header(self) -> str:
         """
         Generate the header section of the resume.

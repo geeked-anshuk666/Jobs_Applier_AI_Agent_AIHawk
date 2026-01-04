@@ -1,4 +1,4 @@
-from src.libs.resume_and_cover_builder.template_base import prompt_header_template, prompt_education_template, prompt_working_experience_template, prompt_projects_template, prompt_achievements_template, prompt_certifications_template, prompt_additional_skills_template
+from src.libs.resume_and_cover_builder.template_base import prompt_header_template, prompt_education_template, prompt_working_experience_template, prompt_projects_template, prompt_achievements_template, prompt_certifications_template, prompt_additional_skills_template, prompt_summary_template
 
 prompt_header = """
 Act as an HR expert and resume writer specializing in ATS-friendly resumes. Your task is to create a professional and polished header for the resume. The header should:
@@ -25,28 +25,49 @@ Act as an HR expert and resume writer with a specialization in creating ATS-frie
 
 
 prompt_working_experience = """
-Act as an HR expert and resume writer with a specialization in creating ATS-friendly resumes. Your task is to detail the work experience for a resume. For each job entry, ensure you include:
+Act as an HR expert and resume writer with a specialization in creating high-scoring ATS-friendly resumes. Your task is to detail the work experience for a resume. To achieve an ATS score > 90, follow these strict rules:
 
-1. **Company Name and Location**: Provide the name of the company and its location.
-2. **Job Title**: Clearly state your job title.
-3. **Dates of Employment**: Include the start and end dates of your employment.
-4. **Responsibilities and Achievements**: Describe your key responsibilities and notable achievements, emphasizing measurable results and specific contributions.
+1. **Format**: Follow the [Template to Use] exactly.
+2. **Action Verbs**: Start every bullet point with a strong, diverse professional action verb (e.g., "Engineered", "Orchestrated", "Spearheaded").
+3. **Metrics & Quantifiable Results**: Every responsibility MUST include a metric (e.g., %, $, numbers). Use the [Action Verb] + [Task] + [Result/Metric] format.
+4. **Keyword Optimization**: Intelligently integrate technical keywords from the job description context if provided.
+5. **Readability**: Ensure bullet points are concise yet high-impact. Avoid "bogus" or "fluff" language.
 
 - **My information:**  
   {experience_details}
+- **Job Description Context:**
+  {job_description}
 """+ prompt_working_experience_template
 
 
 prompt_projects = """
-Act as an HR expert and resume writer with a specialization in creating ATS-friendly resumes. Your task is to highlight notable side projects. For each project, ensure you include:
+Act as an HR expert and resume writer with a specialization in high-impact technical resumes. Your task is to highlight notable side projects. For a >90 ATS score:
 
-1. **Project Name and Link**: Provide the name of the project and include a link to the GitHub repository or project page.
-2. **Project Details**: Describe any notable recognition or achievements related to the project, such as GitHub stars or community feedback.
-3. **Technical Contributions**: Highlight your specific contributions and the technologies used in the project. 
+1. **Highlight Scalability**: Emphasize how projects solve technical problems or handle scale (e.g., "handled 10k+ requests").
+2. **Tech Stack**: Clearly mention specific tools and languages used.
+3. **Format**: Every project bullet must show a result or a technical achievement.
 
 - **My information:**  
   {projects}
+- **Job Description Context:**
+  {job_description}
 """+ prompt_projects_template
+
+
+prompt_summary = """
+Act as an HR expert and resume writer specializing in professional branding. Your task is to create a powerful, 3-4 sentence Professional Summary. 
+
+1. **Impact**: Start with a strong title and years of experience.
+2. **Alignment**: Tailor the summary to align key strengths with the job description.
+3. **ATS keywords**: Naturally integrate top technical keywords from the job description.
+4. **Tone**: Professional, confident, and achievement-oriented.
+
+- **My Information:**
+  {personal_information}
+  {skills}
+- **Job Description Context:**
+  {job_description}
+"""+ prompt_summary_template
 
 
 prompt_achievements = """

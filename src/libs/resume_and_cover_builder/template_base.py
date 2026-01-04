@@ -192,3 +192,14 @@ prompt_additional_skills_template = """
 '''
 The results should be provided in html format, Provide only the html code for the resume, without any explanations or additional text and also without ```html ```
 """
+
+prompt_summary_template = """
+- **Template to Use**
+```
+<section id="summary">
+    <h2>Professional Summary</h2>
+    <p>[Your professional summary, tailored to the job description, highlighting key achievements and skills]</p>
+</section>
+```
+The results should be provided in html format, Provide only the html code for the resume, without any explanations or additional text and also without ```html ```
+"""
