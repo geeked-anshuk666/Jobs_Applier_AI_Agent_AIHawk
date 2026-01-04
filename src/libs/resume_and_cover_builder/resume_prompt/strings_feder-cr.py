@@ -25,15 +25,14 @@ Act as an HR expert and resume writer with a specialization in creating ATS-frie
 
 
 prompt_working_experience = """
-Act as an HR expert and resume writer with a specialization in creating high-scoring ATS-friendly resumes. Your task is to detail the work experience for a resume. Aim to fill the page by providing 4-6 high-impact bullet points for each role.
+Act as an HR expert and resume writer specializing in high-scoring technical resumes. Your task is to detail work experience with "Strategic Enhancement" for the Job Description.
 
-To achieve an ATS score > 90, follow these strict rules:
-1. **Format**: Follow the [Template to Use] exactly.
-2. **Action Verbs**: Start every bullet point with a strong, diverse professional action verb.
-3. **Metrics & Quantifiable Results**: Every responsibility MUST include a metric (e.g., %, $, numbers). Use the [Action Verb] + [Task] + [Result/Metric] format.
-4. **Keyword Optimization**: Intelligently integrate technical keywords from the job description context.
-5. **Detail & Depth**: Provide thorough explanations of technical challenges and solutions to ensure the content is substantial and professional.
-6. **Volume**: Ensure there are at least 4-6 bullet points per experience entry to avoid a sparse appearance.
+**Strategic Enhancement Rules:**
+1. **Tailoring**: Intelligently align bullet points with the keywords and responsibilities in the Job Description. 
+2. **Impact Optimization**: It is acceptable to "strategically enhance" achievements (e.g., slightly optimizing metrics or emphasizing relevant sub-tasks) as long as they remain professional, credible, and undetectable by recruiters.
+3. **Format**: Follow the [Template to Use] exactly. Provide 4-6 high-impact bullet points per role.
+4. **Action Verbs**: Start every bullet point with a strong, diverse professional action verb.
+5. **Metrics**: Every responsibility MUST include a metric (%, $, numbers) to demonstrate impact.
 
 - **My information:**  
   {experience_details}
@@ -106,10 +105,10 @@ If any of the certification details (e.g., descriptions) are not provided (i.e.,
 prompt_additional_skills = """
 Act as an HR expert and resume writer specializing in technical resumes. Your task is to extract and categorize technical skills from the provided information. 
 
-1. **Categorization**: Group skills into logical labels like "Languages", "Frameworks", "Databases", "DevOps/Tools", "Cloud", etc., mimicking a professional LaTeX format.
-2. **Relevance Filtering**: Focus on high-level technical competencies. Do NOT include overly specific or domain-specific task details (like "VPN Configuration" or "SD-WAN Routing") unless they are core recurring technical skills or specifically emphasized in the Job Description. Keep those in the [Work Experience] section instead.
-3. **Format**: Use the [Template to Use] provided. Each bullet point MUST have a bold Category Header followed by a comma-separated list of skills.
-4. **Languages**: Ensure there is a dedicated "Languages" category for spoken languages (e.g., English, Hindi).
+1. **Strategic Selection**: prioritize and emphasize skills that are mentioned in the Job Description.
+2. **Categorization**: Group skills into logical labels like "Languages", "Frameworks", "Databases", "DevOps/Tools", "Cloud", etc.
+3. **Professional Format**: Each bullet point MUST have a bold Category Header followed by a comma-separated list of technologies.
+4. **Languages**: Include a "Languages" category for spoken languages (e.g., English, Hindi).
 
 - **My information:**  
   {languages}

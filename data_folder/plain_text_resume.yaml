@@ -26,14 +26,14 @@ experience_details:
   - position: Software Developer
     company: Anexgate Network Security Solutions
     employment_period: Feb 2025 – Present
-    location: Belgaum, Karnataka, India
+    location: Belagavi, Karnataka, India
     industry: Network Security
     key_responsibilities:
-      - description: Built and maintained a Django-based internal ticketing system using PostgreSQL and Azure AD authentication, handling 500+ weekly support requests and reducing ticket resolution time by 30%.
-      - description: Developed secure high-performance REST APIs for firewall and network management modules, reducing API response latency by 40% through efficient query optimization.
-      - description: Implemented asynchronous background tasks using Celery and Redis to process 10k+ daily log entries, offloading intensive tasks and improving application responsiveness by 90%.
-      - description: Optimized Django ORM queries and database indexing strategies, resulting in a 50% decrease in average page load times for core dashboards.
-      - description: Deployed and maintained production services using Docker, Nginx, and Gunicorn on cloud infrastructure, achieving 99.9% system uptime and automating deployment pipelines.
+      - description: Built and maintained a Django-based internal ticketing system using PostgreSQL and Azure AD authentication to support customer support workflows.
+      - description: Developed REST APIs for firewall and network management modules including Routing, VPN, IDS/IPS, and SD-WAN, implementing token-based authentication and access controls.
+      - description: Implemented asynchronous background tasks using Celery and Redis for log processing, report generation, and scheduled jobs.
+      - description: Optimized Django ORM queries and indexing strategies to improve data retrieval performance and reduce query latency.
+      - description: Deployed and maintained production services using Docker, Nginx, and Gunicorn on a cloud VM, handling environment configuration and uptime monitoring.
     skills_acquired:
       - Python
       - Django
@@ -45,18 +45,23 @@ experience_details:
       - Nginx
       - Gunicorn
       - Azure AD
+      - Routing
+      - VPN
+      - IDS/IPS
+      - SD-WAN
+      - Token-based Authentication
 
 projects:
   - name: Food Delivery Microservices Platform
-    description: Built scalable microservices for Users, Restaurants, and Delivery using FastAPI, SQLAlchemy, and Docker, with fully documented Swagger APIs. Improved order-processing performance using asynchronous request handling and Redis-backed background task execution. handling 1000+ concurrent requests.
+    description: Built scalable microservices for Users, Restaurants, and Delivery using FastAPI, SQLAlchemy, Docker, with fully documented Swagger APIs. Improved order-processing performance using asynchronous request handling and Redis-backed background task execution.
     link: https://github.com/geeked-anshuk666/food-delivery-backend
   - name: Product Importer Application
     description: Designed and implemented a Django-based backend system to ingest large CSV files (up to 500,000 records) with validation, duplicate handling, and real-time import progress tracking. Offloaded long-running import tasks to Celery with Redis, ensuring non-blocking API requests; containerized and deployed the service using Docker with PostgreSQL.
     link: https://github.com/geeked-anshuk666/product-importer
   - name: Skin Disease Classifier
-    description: Trained a convolutional neural network based on VGG16 using publicly available datasets including ISIC Archive, HAM10000, and DermNet for multi-class skin disease classification. Crafted interactive Flask web interface facilitating image uploads and real-time predictions achieving 92% classification accuracy.
+    description: Trained a convolutional neural network based on VGG16 using publicly available datasets including ISIC Archive, HAM10000, and DermNet for multi-class skin disease classification. Crafted interactive Flask web interface facilitating image uploads and real-time predictions.
     link: https://github.com/geeked-anshuk666/Skin_Disease_classification
-    
+
 achievements: []
 
 certifications:
@@ -79,8 +84,10 @@ interests:
   - DevOps
 
 technical_skills:
+  - Python
   - Java
   - C
+  - Django
   - FastAPI
   - Flask
   - Django REST Framework
@@ -90,11 +97,17 @@ technical_skills:
   - CSS
   - JavaScript
   - Figma
+  - PostgreSQL
   - MySQL
   - SQLite
+  - Redis
   - Git
   - GitHub
   - GitLab
+  - Docker
+  - Nginx
+  - Gunicorn
+  - Celery
   - DigitalOcean
   - Linux
   - Machine Learning Foundations
