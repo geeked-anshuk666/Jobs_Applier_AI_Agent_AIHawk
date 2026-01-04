@@ -1,0 +1,150 @@
+/*Classic LaTeX$https://github.com/geeked-anshuk666*/
+body {
+    font-family: "Times New Roman", Times, serif;
+    line-height: 1.25;
+    color: #000;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0.4in;
+    font-size: 10.5pt;
+    background-color: white;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 24pt;
+    font-weight: normal;
+    margin: 0;
+    color: #000;
+    text-transform: none;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    font-size: 10pt;
+    margin-top: 5px;
+}
+
+.contact-info p {
+    margin: 0;
+}
+
+/* Pipe separator emulator */
+.contact-info p:not(:last-child):after {
+    content: " | ";
+    margin-left: 5px;
+}
+
+.contact-info a {
+    color: #000;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* Hide icons for classic LaTeX look if the HTML includes them */
+.fab,
+.fas,
+.fab fa-github,
+.fas fa-envelope,
+.fas fa-phone,
+.fas fa-map-marker-alt,
+.fas fa-globe,
+.fab fa-linkedin {
+    display: none !important;
+}
+
+h2 {
+    font-size: 12pt;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+    padding-bottom: 0px;
+    margin: 15px 0 5px 0;
+    text-align: left;
+    text-transform: none;
+    /* LaTeX uses normal case usually */
+}
+
+.entry {
+    margin-bottom: 10px;
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 10.5pt;
+}
+
+.entry-details {
+    display: flex;
+    justify-content: space-between;
+    font-style: italic;
+    margin-bottom: 2px;
+    font-size: 10pt;
+}
+
+/* Handle company and location on same line if template allows */
+.entry-name {
+    font-weight: bold;
+}
+
+.entry-location {
+    font-weight: normal;
+}
+
+.compact-list {
+    margin: 2px 0;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.compact-list li {
+    margin-bottom: 1px;
+    padding-left: 0;
+}
+
+/* Skills section styling */
+#skills-languages .two-column {
+    display: flex;
+    flex-direction: column;
+    /* LaTeX skills are often bulleted or comma separated */
+}
+
+#skills-languages .compact-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#skills-languages li {
+    display: inline;
+}
+
+#skills-languages li:not(:last-child):after {
+    content: ", ";
+}
+
+/* Remove bold from labels if needed to match LaTeX style */
+#skills-languages strong {
+    font-weight: bold;
+}
+
+@media print {
+    body {
+        padding: 0;
+        margin: 0;
+    }
+
+    @page {
+        margin: 0.4in;
+    }
+}
