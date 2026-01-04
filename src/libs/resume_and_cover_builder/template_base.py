@@ -169,23 +169,17 @@ prompt_additional_skills_template = """
 - **Template to Use**
 '''
 <section id="skills-languages">
-    <h2>Additional Skills</h2>
+    <h2>Skills</h2>
     <div class="two-column">
       <ul class="compact-list">
-          <li>[Specific Skill or Technology]</li>
-          <li>[Specific Skill or Technology]</li>
-          <li>[Specific Skill or Technology]</li>
-          <li>[Specific Skill or Technology]</li>
-          <li>[Specific Skill or Technology]</li>
-          <li>[Specific Skill or Technology]</li>
+          <li><strong>[Category Name]:</strong> [Skill 1, Skill 2, ...]</li>
+          <li><strong>[Category Name]:</strong> [Skill 1, Skill 2, ...]</li>
+          <li><strong>[Category Name]:</strong> [Skill 1, Skill 2, ...]</li>
       </ul>
       <ul class="compact-list">
-          <li>[Specific Skill or Technology]</li>
-          <li>[Specific Skill or Technology]</li>
-          <li>[Specific Skill or Technology]</li>
-          <li>[Specific Skill or Technology]</li>
-          <li>[Specific Skill or Technology]</li>
-          <li><strong>Languages:</strong> </li>
+          <li><strong>[Category Name]:</strong> [Skill 1, Skill 2, ...]</li>
+          <li><strong>[Category Name]:</strong> [Skill 1, Skill 2, ...]</li>
+          <li><strong>Languages:</strong> [Language 1, Language 2, ...]</li>
       </ul>
     </div>
 </section>

@@ -283,6 +283,7 @@ class LLMResumer:
             "interests": self.resume.interests,
             "technical_skills": self.resume.technical_skills if hasattr(self.resume, 'technical_skills') else [],
             "skills": skills,
+            "job_description": ""
         } if data is None else data
         output = chain.invoke(input_data)
         

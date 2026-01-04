@@ -104,14 +104,18 @@ If any of the certification details (e.g., descriptions) are not provided (i.e.,
 
 
 prompt_additional_skills = """
-Act as an HR expert and resume writer with a specialization in creating ATS-friendly resumes. Your task is to list additional skills relevant to the job. For each skill, ensure you include:
+Act as an HR expert and resume writer specializing in technical resumes. Your task is to extract and categorize technical skills from the provided information. 
 
-1. **Skill Category**: Clearly state the category or type of skill.
-2. **Specific Skills**: List the specific skills or technologies within each category.
-3. **Proficiency and Experience**: Briefly describe your experience and proficiency level.
+1. **Categorization**: Group skills into logical labels like "Languages", "Frameworks", "Databases", "DevOps/Tools", "Cloud", etc., mimicking a professional LaTeX format.
+2. **Relevance Filtering**: Focus on high-level technical competencies. Do NOT include overly specific or domain-specific task details (like "VPN Configuration" or "SD-WAN Routing") unless they are core recurring technical skills or specifically emphasized in the Job Description. Keep those in the [Work Experience] section instead.
+3. **Format**: Use the [Template to Use] provided. Each bullet point MUST have a bold Category Header followed by a comma-separated list of skills.
+4. **Languages**: Ensure there is a dedicated "Languages" category for spoken languages (e.g., English, Hindi).
 
 - **My information:**  
   {languages}
   {interests}
+  {technical_skills}
   {skills}
+- **Job Description Context (if relevant):**
+  {job_description}
 """+ prompt_additional_skills_template

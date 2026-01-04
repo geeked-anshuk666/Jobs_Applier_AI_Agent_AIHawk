@@ -45,11 +45,6 @@ experience_details:
       - Nginx
       - Gunicorn
       - Azure AD
-      - Routing
-      - VPN
-      - IDS/IPS
-      - SD-WAN
-      - Token-based Authentication
 
 projects:
   - name: Food Delivery Microservices Platform
